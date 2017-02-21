@@ -1,8 +1,9 @@
 from flaskcbv.url import Url, make_urls
-from views import authView
+from views import loginView, logoutView
 
 namespases = make_urls(
-    Url('', authView(), name="static"),
+    Url('login/', loginView(), name="login"),
+    Url('logout/', logoutView(), name="logout"),
 )
 
 
