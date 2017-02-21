@@ -1,0 +1,7 @@
+sudo apt-get install python-alembic
+sudo apt-get install python-psycopg2
+##sudo aptitude install alembic python-psycopg2
+
+sudo pip install flaskcbv
+sudo pip install asa_mptt
+

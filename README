@@ -1,0 +1,71 @@
+To install project:
+
+
+0. install all from INSTALL file
+
+1. go to cloned project directory, and run: 
+    $ git pull
+
+2. copy and modify config file:
+    $ cp conf/local.mk.orig conf/local.mk
+    $ vi conf/local.mk
+
+3. Run make as superuser to make configs:
+    $ sudo make init
+
+4. Link configs to system:
+    ## ONLY For linux:
+    $ sudo make configs-linux 
+
+    ## ONLY For FreeBSD:
+    $ sudo make configs-freebsd 
+
+5. Create database:
+    $ cd scripts/
+    $ ./init_db.py 
+    $ cd ../
+
+6. Init migrations in database:
+    $ cd globals
+    $ alembic upgrade head
+
+7. Now, you can run test server on port 8889:
+    $ cd web/apps
+    $ python start.py
+
+
+
+Setting up database PostgreSQL:
+
+0. install database;
+
+1. find database user in /etc/passwd:
+    $ cat /etc/passwd | grep ostgres
+    postgres:x:122:130:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+
+2. Under this user set up database:
+
+    $ sudo su postgres
+
+    postgres@localhost$ psql 
+    psql (9.5.3)
+    Type "help" for help.
+
+    postgres=# create user portal WITH PASSWORD 'qwerty';
+    postgres=# drop database portal;
+    postgres=# create database portal with owner portal;
+    postgres=# \q
+    postgres@localhost$ exit
+    $
+
+3. Write this parameters(e.g. user: "portal", passwd: "qwerty", dbname: "portal", host: localhost) in conf/local.mk
+   Use this information both for master and slave databases;
+
+4. run "make init" from root of the project to make correct config files(e.g. for alembic)
+
+5. have fun!
+    
+
+    
+
+

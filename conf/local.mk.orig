@@ -1,0 +1,20 @@
+OWNER             = someuser
+OWNER_GROUP       = projects
+
+ROOT              = /projects/lizaportal
+EMAIL             = root@localhost
+
+HTTPD_HOST        = rc.osteola.ru
+HTTPD_USER        = www
+HTTPD_GROUP       = www-data
+
+ROOTCOOKIE        = .osteola.ru
+
+
+## Timediff TZ(hours) from UTC (e.g. for moscow: +3 or 3), int
+TIMEDIFF_TZ	= "3"
+
+DB_MASTER         = sqlite:////tmp/osteola-portal.db
+DB_SLAVE          = sqlite:////tmp/osteola-portal.db
+
+MAKE              = gmake

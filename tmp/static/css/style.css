@@ -1,0 +1,50 @@
+html { 
+     background: #fefefe;
+     background: red;
+}
+
+ body {    
+     font: 150% arial,sans-serif;
+     background: #f1fdf4;
+     background: red;
+ }
+
+.service_box {
+    border-radius: 50px;
+    padding-top: 30px;
+    width: 300px;
+    height: 120px; 
+    font-size: 35px;
+    font-weight: bold;     
+    text-align: center;
+}
+
+.sbox1 {
+    border: 2px solid #8de2ff;
+    background: #8de2ff;
+    margin: 30px 0 0 50px;
+}
+
+.sbox2 {
+    border: 2px solid #ffcf6b;
+    background: #ffcf6b;
+    margin: 30px 0 0 350px;
+}
+
+
+.sbox3 {
+    border: 2px solid #46ffd1;
+    background: #46ffd1;
+    margin: 30px 0 0 650px;
+}
+
+
+#underground {
+    background: #868686;
+    height: 40px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 0 0 20px;
+    font-size: 14px;
+    color: #fffeee;
+} 
