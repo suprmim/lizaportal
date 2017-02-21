@@ -8,6 +8,8 @@ logging.basicConfig(level=logging.DEBUG, format='%(levelname)s - - %(asctime)s %
 
 sys.path.append('@WEB@')
 sys.path.append('@APPS@')
+sys.path.append('@GLOBALS@')
+
 
 os.environ.setdefault("FLASK_SETTINGS_MODULE", "settings")
 

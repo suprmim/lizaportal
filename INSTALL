@@ -1,3 +1,5 @@
+aptitude install redis-server python-redis
+
 sudo apt-get install python-alembic
 sudo apt-get install python-psycopg2
 ##sudo aptitude install alembic python-psycopg2

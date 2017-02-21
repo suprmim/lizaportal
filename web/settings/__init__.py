@@ -3,6 +3,7 @@ FLASKCONFIG = 'flaskconfig'
 APPLICATIONS = (
     'main', 
     'index', 
+    'auth', 
 )
 
 DEFAULT_HEADERS = {
