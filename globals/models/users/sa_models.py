@@ -13,9 +13,10 @@ metadata = get_metadata()
 
 ## MODEL:
 class Users(object):
-    def __init__(self, login, passwd=None, disabled=False):
-        self.login = city
+    def __init__(self, login, passwd=None, email=None, disabled=False):
+        self.login = login
         self.passwd = passwd
+        self.email = email
         self.disabled = disabled
 
 
@@ -23,6 +24,7 @@ users = Table('users', metadata,
     Column('id', Integer, primary_key=True, nullable=False, unique=True),
     Column('login', VARCHAR(255), nullable=False),
     Column('passwd', VARCHAR(255), nullable=True),
+    Column('email', VARCHAR(255), nullable=True),
     Column('disabled', Boolean(), nullable=False, server_default=sa_false()),
     extend_existing=True,
 )

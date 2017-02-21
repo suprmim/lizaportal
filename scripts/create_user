@@ -5,37 +5,76 @@ import sys
 import logging
 import getpass
 
-import cron.py_path
-from global_settings import settings
-from models.session import session
-from models.base import get_model
+import py_path
 
-Users = get_model('users.Users')
+from utils.db import get_db_session
+from models.users.sa_models import Users as UsersModel
+from models.groups.sa_models import Groups as GroupsModel
+from models.users_groups.sa_models import UsersGroups as UsersGroupsModel
+
 
 admin_default_login = 'admin'
 admin_default_passwd = 'admin'
+admin_default_group = 'admin'
+
+## Init session
+#session = get_db_session(echo=True)
+session = get_db_session(echo=False)
+
 
 def check_for_users():
-    fuser = session.query(Users).first()
+    fuser = session.query(UsersModel).first()
     if fuser is not None:
         return True
     return False
     
-def check_for_user(login, passwd):
-    user = session.query(Users).filter(Users.login==login).first()
+
+def add_to_group(user, grp_name):
+    ## Check for group existent:
+    group = session.query(GroupsModel).filter(GroupsModel.name==grp_name).first()
+    if group is not None:
+        logging.info("Group: '%s' Found! %s" % (grp_name, group))
+    else:
+        group = GroupsModel(name=grp_name)
+        session.add(group)
+        session.commit()
+        logging.info("New group '%s' Created! %s" % (grp_name, group)) 
+    
+    if user is None or user.id is None or group is None or group.id is None:
+        logging.error("Something is wrong! No user or group found! %s %s" % (user, group))
+        sys.exit(1)
+
+    ugroup = session.query(UsersGroupsModel).filter(UsersGroupsModel.user_id==user.id).filter(UsersGroupsModel.group_id==group.id).first()
+    if ugroup is not None:
+        logging.info("User allready in group!")
+        return True
+
+    ugroup = UsersGroupsModel(user.id, group.id)
+    session.add(ugroup)
+    session.commit()
+    
+    return True
+
+
+def check_for_user(login):
+    user = session.query(UsersModel).filter(UsersModel.login==login).first()
     if user is not None:
         return True
     return False
 
-def get_or_create_user(login, passwd):
-    if (check_for_user(login, passwd)):
+def get_or_create_user(login, passwd, group=None, email=None):
+    if (check_for_user(login)):
         logging.error('Allready exist!')
         return False
 
     passwd = sha.new(passwd).hexdigest()
-    user = Users(login=login, passwd=passwd, status=2, is_active=True)
+    user = UsersModel(login=login, passwd=passwd, email=email, disabled=False)
     session.add(user)
     session.commit()
+
+    if group is not None:
+        return add_to_group(user, group)
+
     return True
 
 
@@ -52,8 +91,10 @@ if __name__ == '__main__':
     print "Creating custom account..."
     admin_login = raw_input("Username[%s]: " % admin_default_login) or admin_default_login
     admin_passwd = getpass.getpass("Password[%s]: " % admin_default_passwd) or admin_default_passwd
+    admin_email = raw_input("Email[]: ") or None
+    admin_group = raw_input("Group[%s]: " % admin_default_group) or admin_default_group
 
-    if get_or_create_user(admin_login, admin_passwd):
+    if get_or_create_user(admin_login, admin_passwd, group=admin_group, email=admin_email):
         print "Done!"
     else:
         print "Failed!"
