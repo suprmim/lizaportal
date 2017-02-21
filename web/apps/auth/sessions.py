@@ -90,7 +90,7 @@ class RedisSessions(object):
 
 
 class Sessions(RedisSessions):
-    expire = 600
+    expire = 43200
     #expire = 60
     session_size=32
 
