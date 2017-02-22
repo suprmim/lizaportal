@@ -98,9 +98,10 @@ class confirmationLetterMixin(object):
 
         ## Sending email confirmation:
         if email is not None:
-            body = render_template(self.template_confirmation_email, **kwargs)
+            body_a = render_template(self.template_confirmation_email, **kwargs).split('\n')
+            subject, body = body_a[0], "\n".join(body_a[1:])
             try:
-                send_email(email, body)
+                send_email(email, body, subject=subject)
             except Exception as err:
                 logging.error("Can't send confirmation to: %s: %s" % (email, err))
 
@@ -129,6 +130,7 @@ class registerView(confirmationLetterMixin, authMixin, FormViewMixin, TemplateVi
             login=form.cleaned_data['username'], passwd=form.cleaned_data['passwd'], 
             email=form.cleaned_data['email'], validated=False, 
             fio=form.cleaned_data['fio'], disabled=False,
+            phone=form.cleaned_data['phone'], 
             validation_code=" ".join(map(str, validation_code_a))
         )
         db_session.add(user)

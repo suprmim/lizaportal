@@ -1,3 +1,4 @@
+Account confirmation letter
 Diar {{ fio }}!
 
 You are registered on our service!

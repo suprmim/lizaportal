@@ -13,6 +13,8 @@ Email: <input type="text" name="email" value="{{ form.data.email }}" >
 <br>
 Name, Surname: <input type="text" name="fio" value="{{ form.data.fio }}">
 <br>
+Phone: <input type="text" name="phone" value="{{ form.data.phone }}">
+<br>
 <input type="submit" name="REGISTER!">
 </form>
 

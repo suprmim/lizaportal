@@ -17,6 +17,7 @@ TIMEDIFF_TZ	= "3"
 DB_MASTER         = sqlite:////tmp/osteola-portal.db
 DB_SLAVE          = sqlite:////tmp/osteola-portal.db
 
+EMAIL_SMTP_IDENT  = OSTEOLA.ru
 EMAIL_SMTP_SENDER = some@mail.service
 EMAIL_SMTP_LOGIN  = smtp_login
 EMAIL_SMTP_PASSWD = smtp_passwd

@@ -115,6 +115,13 @@ class RegisterForm(Form):
         value = u"%s" % value
         return value[0:250]
 
+    def clean_phone(self, value):
+        if value is None:
+            value = ''
+        value = u"%s" % value
+        return value[0:32]
+
+
 
     def clean(self, *args, **kwargs):
 
@@ -131,14 +138,21 @@ class RegisterForm(Form):
         ## Check username and password:
         user = db_session.query(UsersModel).filter(UsersModel.login==self.cleaned_data['username']).first()
         if user is not None:
-            self.errors['username'] = 'user_exist'
+            self.errors['username'] = 'exist'
 
         if not self.cleaned_data['passwd'] == self.cleaned_data['passwd2']:
-            self.errors['passwd'] = 'wrong_passwd'
+            self.errors['passwd'] = 'wrong'
 
         ## Check username and password:
         user = db_session.query(UsersModel).filter(UsersModel.email==self.cleaned_data['email']).first()
         if user is not None:
-            self.errors['email'] = 'email_exist'
+            self.errors['email'] = 'exist'
+
+        ## Check username and password:
+        if self.cleaned_data['phone'] != '':
+            user = db_session.query(UsersModel).filter(UsersModel.phone==self.cleaned_data['phone']).first()
+            if user is not None:
+                self.errors['phone'] = 'exist'
+
 
 

@@ -3,12 +3,12 @@ import smtplib
 from gsettings import settings
 
 def send_email(email, body, subject=''):
-    if settings.EMAIL_SMTP_SENDER is None:
-        raise Exception('No EMAIL_SMTP_SENDER in flaskcbv settings')
+    if settings.EMAIL_SMTP_SENDER is None or settings.EMAIL_SMTP_IDENT is None:
+        raise Exception('No EMAIL_SMTP_SENDER or EMAIL_SMTP_IDENT in global settings')
     if settings.EMAIL_SMTP_LOGIN is None or settings.EMAIL_SMTP_PASSWD is None:
-        raise Exception('No EMAIL_SMTP_LOGIN or EMAIL_SMTP_PASSWD in flaskcbv settings')
+        raise Exception('No EMAIL_SMTP_LOGIN or EMAIL_SMTP_PASSWD in global settings')
     if settings.EMAIL_SMTP_SERVER is None or settings.EMAIL_SMTP_PORT is None:
-        raise Exception('No EMAIL_SMTP_SERVER or EMAIL_SMTP_PORT in flaskcbv settings')
+        raise Exception('No EMAIL_SMTP_SERVER or EMAIL_SMTP_PORT in global settings')
 
     try:
         s_ = smtplib.SMTP(settings.EMAIL_SMTP_SERVER, settings.EMAIL_SMTP_PORT)
@@ -23,12 +23,12 @@ def send_email(email, body, subject=''):
     s_.login(settings.EMAIL_SMTP_LOGIN, settings.EMAIL_SMTP_PASSWD)
 
     content = u"""\
-From: %(sender)s
+From: %(ident)s
 Subject: %(subject)s
 
 %(body)s
     """ % {
-        'sender': settings.EMAIL_SMTP_SENDER,
+        'ident': settings.EMAIL_SMTP_IDENT,
         'subject': subject,
         'body': body,
     }

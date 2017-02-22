@@ -110,6 +110,7 @@ define build
 		-e 's%@WEBAPI_PORT@%${WEBAPI_PORT}%g' \
 		-e 's%@DB_MASTER@%${DB_MASTER}%g' \
 		-e 's%@DB_SLAVE@%${DB_SLAVE}%g' \
+		-e 's%@EMAIL_SMTP_IDENT@%${EMAIL_SMTP_IDENT}%g' \
 		-e 's%@EMAIL_SMTP_SENDER@%${EMAIL_SMTP_SENDER}%g' \
 		-e 's%@EMAIL_SMTP_LOGIN@%${EMAIL_SMTP_LOGIN}%g' \
 		-e 's%@EMAIL_SMTP_PASSWD@%${EMAIL_SMTP_PASSWD}%g' \
