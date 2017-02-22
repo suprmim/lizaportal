@@ -92,6 +92,7 @@ endef
 
 define build
 	@sed \
+		-e 's%@CONFIGPREFIX@%${CONFIGPREFIX}%g' \
 		-e 's%@ROOT@%${ROOT}%g' \
 		-e 's%@WEB@%${WEB}%g' \
 		-e 's%@APPS@%${APPS}%g' \
@@ -107,8 +108,7 @@ define build
 		-e 's%@MIGRATIONS@%${MIGRATIONS}%g' \
 		-e 's%@HTTPD_USER@%${HTTPD_USER}%g' \
 		-e 's%@HTTPD_HOST@%${HTTPD_HOST}%g' \
-		-e 's%@WEBAPI_HOST@%${WEBAPI_HOST}%g' \
-		-e 's%@WEBAPI_PORT@%${WEBAPI_PORT}%g' \
+		-e 's%@WEBBACKENDPORT@%${WEBBACKENDPORT}%g' \
 		-e 's%@DB_MASTER@%${DB_MASTER}%g' \
 		-e 's%@DB_SLAVE@%${DB_SLAVE}%g' \
 		-e 's%@EMAIL_SMTP_IDENT@%${EMAIL_SMTP_IDENT}%g' \

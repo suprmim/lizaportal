@@ -9,6 +9,8 @@ HTTPD_HOST        = rc.osteola.ru
 HTTPD_USER        = www
 HTTPD_GROUP       = www-data
 
+WEBBACKENDPORT    = 8888
+
 ROOTCOOKIE        = .osteola.ru
 
 
