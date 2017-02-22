@@ -2,6 +2,7 @@ include conf/local.mk
 
 .DEFAULT_GOAL := help
 
+CONFIGPREFIX	?= 
 WEB		?= ${ROOT}/web
 APPS		?= ${WEB}/apps
 PROTOS		?= ${ROOT}/protos
@@ -38,15 +39,15 @@ configs: configs-freebsd
 
 configs-freebsd: build_protos
 	@mkdir -p /usr/local/etc/supervisor
-	@ln -s ${CONFIG}/supervisor.conf /usr/local/etc/supervisor/osteola-portal.conf
+	@ln -s ${CONFIG}/supervisor.conf /usr/local/etc/supervisor/${CONFIGPREFIX}osteola-portal.conf
 	@mkdir -p /usr/local/etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/osteola-portal.conf
+	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/${CONFIGPREFIX}osteola-portal.conf
 
 configs-linux: build_protos
 	@mkdir -p /etc/supervisor/conf.d
-	@ln -s ${CONFIG}/supervisor.conf /etc/supervisor/conf.d/osteola-portal.conf
+	@ln -s ${CONFIG}/supervisor.conf /etc/supervisor/conf.d/${CONFIGPREFIX}osteola-portal.conf
 	@mkdir -p /etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/osteola-portal.conf
+	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/${CONFIGPREFIX}osteola-portal.conf
 
 
 

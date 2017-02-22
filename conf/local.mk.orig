@@ -1,6 +1,7 @@
 OWNER             = someuser
 OWNER_GROUP       = projects
 
+CONFIGPREFIX      = rc_
 ROOT              = /projects/lizaportal
 EMAIL             = root@localhost
 
