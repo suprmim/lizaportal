@@ -32,9 +32,6 @@ Subject: %(subject)s
         'subject': subject,
         'body': body,
     }
-    logging.error('WWWS')
-    logging.error('Sending data: %s' % content)
     s_.sendmail(settings.EMAIL_SMTP_SENDER, email, content.encode('utf-8'))
-    logging.error('Sending data2: %s' % content)
     s_.quit()
 
