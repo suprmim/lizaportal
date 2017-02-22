@@ -1,9 +1,0 @@
-/* цвет фона и рамки навигационного меню */
-
-.navbar-collapse, .navbar > div.container-fluid {
-    background-color: yellow;
-    border-color: yellow;
-    font-size: 16px;
-}
-
-
