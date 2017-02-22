@@ -68,7 +68,7 @@ def get_or_create_user(login, passwd, group=None, email=None):
         return False
 
     passwd = sha.new(passwd).hexdigest()
-    user = UsersModel(login=login, passwd=passwd, email=email, disabled=False)
+    user = UsersModel(login=login, passwd=passwd, email=email, validated=True, disabled=False)
     session.add(user)
     session.commit()
 

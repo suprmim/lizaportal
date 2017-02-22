@@ -1,6 +1,7 @@
 import logging
 import os, sys, stat
 import time
+import re
 
 from gevent.coros import RLock
 from sqlalchemy.schema import MetaData

@@ -11,5 +11,10 @@ Password: <input type="password" name="passwd">
 </form>
 
 Errors: {{ form.errors }}
+
+[
+<a href="{{ url_for('auth:register') }}">Registration</a>
+]
+
 </body>
 </html>

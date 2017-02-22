@@ -10,3 +10,5 @@ sudo pip install flaskcbv
 sudo pip install asa_mptt
 
 
+## E-Mail validator:
+sudo pip install validate_email pyDNS

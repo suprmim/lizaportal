@@ -1,5 +1,9 @@
 import sha
+import re
 import logging
+
+from validate_email import validate_email
+
 from flask import abort, url_for, session as flask_session
 
 from flaskcbv.forms import Form
@@ -60,9 +64,81 @@ class LoginForm(Form):
             self.errors['username'] = 'user_is_disabled'
             return None
 
-        ## Creating new session in redis:
-        session_ = Sessions().create(user.id)
-        flask_session['session'] = session_
+        ## Save user into request:
         self.view.request.user = user
-        self.view.request.session = session_
+
+
+
+class RegisterForm(Form):
+
+    re_valid_uname = re.compile('^[a-z0-9_.@-]+$')
+
+    def clean_username(self, value):
+        if value is None:
+            raise Exception("empty")
+        value = u"%s" % value.lower()
+        if len(value) < 6 or len(value) > 32:
+            raise Exception("length")
+
+        if len(self.re_valid_uname.findall(value)) == 0:
+            raise Exception("symbols")
+
+        return value
+
+    def clean_passwd(self, value):
+        if value is None:
+            raise Exception("empty")
+        value = u"%s" % value
+        if len(value) < 6 or len(value) > 32:
+            raise Exception("length")
+        return sha.new(value).hexdigest()
+
+    def clean_passwd2(self, value):
+        if value is None:
+            raise Exception("empty")
+        value = u"%s" % value
+        return sha.new(value[0:250]).hexdigest()
+
+
+    def clean_email(self, value):
+        if value is None:
+            raise Exception("empty")
+        value = u"%s" % value[0:250]
+        if not validate_email(value, check_mx=False, verify=False):
+            raise Exception("symbols")
+
+        return value
+
+    def clean_fio(self, value):
+        if value is None:
+            raise Exception("empty")
+        value = u"%s" % value
+        return value[0:250]
+
+
+    def clean(self, *args, **kwargs):
+
+        ## First of all, check user by session:
+        if self.view.check_session():
+            self.errors['authed'] = 'All ready authed!'
+            return None
+
+        ## No session stored in cookies, check form data:
+        super(RegisterForm, self).clean()
+        if not self.is_clean:
+            return None
+
+        ## Check username and password:
+        user = db_session.query(UsersModel).filter(UsersModel.login==self.cleaned_data['username']).first()
+        if user is not None:
+            self.errors['username'] = 'user_exist'
+
+        if not self.cleaned_data['passwd'] == self.cleaned_data['passwd2']:
+            self.errors['passwd'] = 'wrong_passwd'
+
+        ## Check username and password:
+        user = db_session.query(UsersModel).filter(UsersModel.email==self.cleaned_data['email']).first()
+        if user is not None:
+            self.errors['email'] = 'email_exist'
+
 
