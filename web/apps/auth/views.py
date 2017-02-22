@@ -82,7 +82,7 @@ class logoutView(authMixin, View):
 
 
 class confirmationLetterMixin(object):
-    token_expire = 30 ## time for code validation
+    token_expire = 3600 ## time for code validation
     template_confirmation_email='auth/register_confirmation.tpl'
 
     def send_confirmation(self, code):
