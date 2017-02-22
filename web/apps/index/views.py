@@ -3,8 +3,9 @@ import datetime
 
 from flaskcbv.view import TemplateView
 
+from misc.mixins.authed import AuthedMixin
 
-class indexView(TemplateView):
-    template='index/index.tpl'
+class indexView(AuthedMixin, TemplateView):
+    template='index.tpl'
 
 

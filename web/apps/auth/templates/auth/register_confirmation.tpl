@@ -1,10 +1,16 @@
-Account confirmation letter
-Diar {{ fio }}!
+Подтверждение регистрации
+Здравствуйте, {{ fio }}!
 
-You are registered on our service!
-Your confirmation code is: {{ code }}
+Вы зарегистрировались на сервисе http://{{ PROJECT_URL }}/
 
-You can enter it on: http://rc.osteola.ru/auth/validate/ Page;
+Для завершения регистрации пройдите по ссылке:
+http://{{ PROJECT_URL }}/auth/validate/{{ code }}/
 
-Also, you can go next url to confirm you e-mail automaticy:
-http://rc.osteola.ru/auth/validate/{{ code }}/
+Или введите код подтверждения: {{ code }} по адресу:
+http://{{ PROJECT_URL }}/auth/validate/
+
+Это письмо носит информативный характер и отвечать на него не требуется.
+Если вы не регистрировались на нашем сайте, приносим свои извинения за причененные неудобства.
+
+С Уважением, администрация сервиса OSTEOLA!
+

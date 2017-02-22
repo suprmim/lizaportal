@@ -72,6 +72,7 @@ class LoginForm(Form):
 class RegisterForm(Form):
 
     re_valid_uname = re.compile('^[a-z0-9_.@-]+$')
+    re_valid_fio_space = re.compile(' ')
 
     def clean_username(self, value):
         if value is None:
@@ -111,9 +112,31 @@ class RegisterForm(Form):
 
     def clean_fio(self, value):
         if value is None:
-            raise Exception("empty")
+            value = ''
         value = u"%s" % value
         return value[0:250]
+
+    def clean_name(self, value):
+        if value is None:
+            value = ''
+        value = u"%s" % self.re_valid_fio_space.sub('', value)
+        return value[0:250]
+
+    def clean_surname(self, value):
+        if value is None:
+            value = ''
+        value = u"%s" % self.re_valid_fio_space.sub('', value)
+        return value[0:250]
+
+    def clean_lastname(self, value):
+        if value is None:
+            value = ''
+        value = u"%s" % self.re_valid_fio_space.sub('', value)
+        return value[0:250]
+
+
+
+
 
     def clean_phone(self, value):
         if value is None:
@@ -154,5 +177,14 @@ class RegisterForm(Form):
             if user is not None:
                 self.errors['phone'] = 'exist'
 
+        if self.cleaned_data['fio'] == '' and self.cleaned_data['name'] == '':
+            self.errors['fio'] = 'empty'
+            self.errors['name'] = 'empty'
+        elif self.cleaned_data['fio'] == '':
+            self.cleaned_data['fio'] = "%s %s %s" % (
+                self.cleaned_data['surname'],
+                self.cleaned_data['name'],
+                self.cleaned_data['lastname'],
+            )
 
 

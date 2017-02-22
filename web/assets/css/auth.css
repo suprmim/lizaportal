@@ -1,0 +1,22 @@
+.auth_input {
+  margin-bottom: 1em;
+  width: 30%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+.auth_btn_wrapper {
+  text-align: right;
+  width: 33%;
+  font-size: 0.8em;
+}
+
+.auth_btn_enter {
+  background-color: #CCFFCC;
+  margin-right: 1em;
+}
+
+.auth_btn {
+  background-color: #CCCCFF;
+}
+

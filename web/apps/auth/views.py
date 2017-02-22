@@ -8,6 +8,7 @@ from flaskcbv.view import TemplateView, View
 from flaskcbv.view.crud import FormViewMixin
 
 from utils.email.smtp import send_email
+from gsettings import settings as global_settings
 
 from .forms import LoginForm, RegisterForm
 from .sessions import Sessions
@@ -89,7 +90,8 @@ class confirmationLetterMixin(object):
         self._send_confirmation(
             email=self.request.user.email,
             fio=self.request.user.fio,
-            code=code
+            code=code,
+            PROJECT_URL=global_settings.PROJECT_URL,
         )
 
     def _send_confirmation(self, email=None, sms=None, **kwargs):
