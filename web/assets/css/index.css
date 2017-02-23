@@ -1,0 +1,43 @@
+* {margin: 0; padding: 0;}
+img {border:none}
+
+html, body {height: 100%;}
+* html .wrapper 
+  height: 100%; /* ie6 */
+}
+
+body {
+  font-family: "lucida sans", verdana, arial, helvetica, sans-serif;
+  font-size: 75%;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.site-content {
+}
+
+.pusher {
+  height: 60px; /* высота нашего подвала */
+}
+
+.header { 
+  background-color: #CCFFFF;
+  background-image: -moz-linear-gradient(#FF9933, #CCFFFF);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF9933), to(#CCFFFF));
+  background-image: -webkit-linear-gradient(#FF9933, #CCFFFF);
+  background-image: -o-linear-gradient(#FF9933, #CCFFFF);
+  background-image: -ms-linear-gradient(#FF9933, #CCFFFF);
+  background-image: linear-gradient(#FF9933, #CCFFFF);
+
+}
+
+.footer { /* подвал */
+  background: #FF6600;
+  color: #fff;
+  height: 60px; /* высота подвала */
+  margin-top: -60px; /* делаем отрицательный отступ по высоте равный высоте подвла, чтобы четко вписаться в размер экрана */
+}
+
