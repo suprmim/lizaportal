@@ -15,6 +15,11 @@
 <br>
 КАБИНЕТ
 
+{% if "admin" in user_groups %}
+    <a href="{{ url_for('seminars:crud_list') }}">СЕМИНАРЫ</a><br>
+{% endif %}
+
+
 {% endblock %}
 
 

@@ -27,7 +27,7 @@ groups = Table('groups', metadata,
 
 
 mapper(Groups, groups, properties={
-        'groups_ugrp': relationship(UsersGroups, backref='groups',
+        'groups_ugrp': relationship(UsersGroups, backref='group',
             order_by=UsersGroups.id, cascade='all,delete,delete-orphan'),
     },
     primary_key=[groups.c.id],

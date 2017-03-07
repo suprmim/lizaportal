@@ -44,7 +44,7 @@ users = Table('users', metadata,
 
 
 mapper(Users, users, properties={         
-        'users_ugrp': relationship(UsersGroups, backref='users',
+        'users_ugrp': relationship(UsersGroups, backref='user',
             order_by=UsersGroups.id, cascade='all,delete,delete-orphan'),
     },  
     primary_key=[users.c.id],
