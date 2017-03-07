@@ -8,6 +8,7 @@ from sqlalchemy.sql.expression import false as sa_false
 from utils.db import get_metadata
 
 from models.users_groups.sa_models import UsersGroups
+from models.seminar_users.sa_models import SeminarUsers
 
 metadata = get_metadata()
 
@@ -46,6 +47,8 @@ users = Table('users', metadata,
 mapper(Users, users, properties={         
         'users_ugrp': relationship(UsersGroups, backref='user',
             order_by=UsersGroups.id, cascade='all,delete,delete-orphan'),
+        'users_seminars': relationship(SeminarUsers, backref='user',
+            order_by=SeminarUsers.id, cascade='all,delete,delete-orphan'),
     },  
     primary_key=[users.c.id],
 )

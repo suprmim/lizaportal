@@ -15,6 +15,8 @@
 <br>
 Семинары
 
+<button onClick="top.document.location.href='{{ url_for('seminars:crud_create') }}'">СОЗДАТЬ</button>
+
 {% endblock %}
 
 
