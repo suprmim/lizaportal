@@ -1,7 +1,6 @@
 FLASKCONFIG = 'flaskconfig'
 
 APPLICATIONS = (
-    'main', 
     'index', 
     'auth', 
     'my', 
