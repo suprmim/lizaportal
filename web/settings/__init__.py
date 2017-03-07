@@ -4,6 +4,7 @@ APPLICATIONS = (
     'main', 
     'index', 
     'auth', 
+    'my', 
 )
 
 DEFAULT_HEADERS = {

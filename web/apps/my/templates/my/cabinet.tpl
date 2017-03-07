@@ -4,6 +4,15 @@
 
 {% block maincontent %}
 
+<br>
+КАБИНЕТ
+<br>
+КАБИНЕТ
+<br>
+КАБИНЕТ
+<br>
+КАБИНЕТ
+<br>
 КАБИНЕТ
 
 {% endblock %}

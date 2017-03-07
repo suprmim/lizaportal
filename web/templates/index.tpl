@@ -13,93 +13,91 @@
     <link rel="stylesheet" href="{{url_for('.static', filename='css/button.css')}}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <title>
+{% block title %}OSTEOLA.RU Портал{% endblock %}
+    </title>
 
   </head>
   <body>
     <div class="wrapper">
+      <div id="container" style="background-color: red;">
+        <button class="menu-btn">&#9776; Menu</button>
+      </div>
+
+      <!-- Pushy Menu -->
+      <nav class="pushy pushy-left" data-focus="#first-link">
+        <div class="pushy-content">
+          <ul>
+            <li class="pushy-submenu">
+              <button id="first-link">Семинары</button>
+              <ul>
+                <li class="pushy-link"><a href="#">Мои семинары</a></li>
+                <li class="pushy-link"><a href="#">Предстоящие</a></li>
+                <li class="pushy-link"><a href="#">История</a></li>
+              </ul>
+            </li>
+            <li class="pushy-submenu">
+              <button>Записаться на прием</button>
+              <ul>
+                <li class="pushy-link"><a href="#">Врачи</a></li>
+                <li class="pushy-link"><a href="#">Мои записи</a></li>
+                <li class="pushy-link"><a href="#">Отменить</a></li>
+              </ul>
+            </li>
+            <li class="pushy-submenu">
+              <button>О клинике</button>
+              <ul>
+                <li class="pushy-link"><a href="#">Новости</a></li>
+                <li class="pushy-link"><a href="#">FAQ</a></li>
+                <li class="pushy-link"><a href="#">Форум</a></li>
+                <li class="pushy-link"><a href="#">Отзывы</a></li>
+                <li class="pushy-link"><a href="#">Помощь</a></li>
+              </ul>
+            </li>
+            <li class="pushy-link"><a href="#">Цены</a></li>
+            <li class="pushy-link"><a href="#">Контакты</a></li>
+            <li class="pushy-link"><a href="#">Соискателям</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Pushy Menu -->
+
+      <div class="header" style="overflow: hidden; padding: 1.55%; min-width: 100%; width: 100%; padding: 20px;">
+        <div style="float: left; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
+          Семинары
+        </div>
+        <div style="float: left; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
+          Записаться
+        </div>
+        <div style="float: left; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
+          Цены
+        </div>
+        <div style="float: left; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
+          О клинике
+        </div>
+        <div style="float: left; width: 35%; text-align: center;">
+          <input type="text" placeholder="Найти" style="padding: 5px; border-radius: 10px; width: 75%;">
+          <button type="submit" class="btn btn-default">Найти</button>
+        </div>
+        <div style="float: left; margin: 0% 0% 0% 0.5%; color: #003366; font-style: italic;">
+          <div>
+            УЛ. МАРШАЛА РОКОССОВСКОГО, 35
+          </div>
+          <div>
+            <span style="float: left; font-size: 0.8em;">C 10:00 ДО 22:00-7</span> <span style="float: right;">+7 (495) 785 90 89</span>
+          </div>
+        </div>
+        <div style="float: left; margin: 0.5% 0.5% 0% 2%; color: #003366; font-weight: bolder; cursor: pointer;">
+          {% include "authed.tpl" %}
+        </div>
+      </div>
+      <br> 
+
+      <!-- Pushy JS -->
+      <script type="text/javascript" src="{{url_for('.static', filename='js/pushy.min.js') }}"></script>
+
       <div class="site-content">
-
-        <!-- Pushy Menu -->
-        <nav class="pushy pushy-left" data-focus="#first-link">
-          <div class="pushy-content">
-            <ul>
-              <li class="pushy-submenu">
-                <button id="first-link">Семинары</button>
-                <ul>
-                  <li class="pushy-link"><a href="#">Мои семинары</a></li>
-                  <li class="pushy-link"><a href="#">Предстоящие</a></li>
-                  <li class="pushy-link"><a href="#">История</a></li>
-                </ul>
-              </li>
-              <li class="pushy-submenu">
-                <button>Записаться на прием</button>
-                <ul>
-                  <li class="pushy-link"><a href="#">Врачи</a></li>
-                  <li class="pushy-link"><a href="#">Мои записи</a></li>
-                  <li class="pushy-link"><a href="#">Отменить</a></li>
-                </ul>
-              </li>
-              <li class="pushy-submenu">
-                <button>О клинике</button>
-                <ul>
-                  <li class="pushy-link"><a href="#">Новости</a></li>
-                  <li class="pushy-link"><a href="#">FAQ</a></li>
-                  <li class="pushy-link"><a href="#">Форум</a></li>
-                  <li class="pushy-link"><a href="#">Отзывы</a></li>
-                  <li class="pushy-link"><a href="#">Помощь</a></li>
-                </ul>
-              </li>
-              <li class="pushy-link"><a href="#">Цены</a></li>
-              <li class="pushy-link"><a href="#">Контакты</a></li>
-              <li class="pushy-link"><a href="#">Соискателям</a></li>
-            </ul>
-          </div>
-        </nav>
-        <!-- Pushy Menu -->
-
-        <div id="container">
-          <button class="menu-btn">&#9776; Menu</button>
-        </div>
-        <div class="header" style="background-color: blue; overflow: hidden; padding: 1.55%;">
-          <div style="float: right; margin: 0.5% 0.5% 0% 2%; color: #003366; font-weight: bolder; cursor: pointer;">
-            Войти
-          </div>
-          <div style="float: right; margin: 0% 0% 0% 0.5%; color: #003366; font-style: italic;">
-            <div>
-              УЛ. МАРШАЛА РОКОССОВСКОГО, 35
-            </div>
-            <div>
-              <span style="float: left; font-size: 0.8em;">C 10:00 ДО 22:00-7</span> <span style="float: right;">+7 (495) 785 90 89</span>
-            </div>
-          </div>
-          <div style="float: right; width: 35%; text-align: center;">
-            <input type="text" placeholder="Найти" style="padding: 5px; border-radius: 10px; width: 75%;">
-            <button type="submit" class="btn btn-default">Найти</button>
-          </div>
-          <div style="float: right; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
-            О клинике
-          </div>
-          <div style="float: right; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
-            Цены
-          </div>
-          <div style="float: right; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
-            Записаться
-          </div>
-          <div style="float: right; margin: 0.5% 1% 0% 1%; color: #003366; font-weight: bolder; cursor: pointer;">
-            Семинары
-          </div>
-          <div style="background-color: lime; float: right; margin: 2px;">
-          </div>
-        </div>
-        <br> 
-        AAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
-        AAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
-        AAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
-        AAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
-
-        <!-- Pushy JS -->
-        <script type="text/javascript" src="{{url_for('.static', filename='js/pushy.min.js') }}"></script>
-
+        {% block maincontent %}{% endblock %}
       </div>                                            <!-- Close for <div class="site-content"> -->
       <div class="pusher"></div>
     </div>                                              <!-- Close for <div class="wrapper"> -->

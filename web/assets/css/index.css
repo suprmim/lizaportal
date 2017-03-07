@@ -41,3 +41,19 @@ body {
   margin-top: -60px; /* делаем отрицательный отступ по высоте равный высоте подвла, чтобы четко вписаться в размер экрана */
 }
 
+
+@media screen and (max-width: 450px) {
+
+        .tabs ul li {
+                width: 25%;
+        }
+        .tabs ul li a {
+                padding-left: 0;
+                padding-right: 0;
+        }
+        .tabs ul li:last-child a {
+                margin-right: 0;
+        }
+
+}
+~                                                   
