@@ -4,18 +4,9 @@
 
 {% block maincontent %}
 
-<br>
-Семинары
-<br>
-Семинары
-<br>
-Семинары
-<br>
-Семинары
-<br>
-Семинары
+<h2>СЕМИНАРЫ</h2>
 
-<button onClick="top.document.location.href='{{ url_for('seminars:crud_create') }}'">СОЗДАТЬ</button>
+<a href="{{ url_for('seminars:crud_create') }}" class="common_button">СОЗДАТЬ</a>
 
 {% endblock %}
 

@@ -7,7 +7,7 @@
 {% if error == 'validated' %}
     Учетная запись уже подтверждена!
 [
-<a href="{{ url_for('index:index') }}">На главную</a>
+<a href="{{ url_for('index:index') }}" class="common_button">На главную</a>
 ]
 
 {% elif error and error != 'notexpired' %}
@@ -20,7 +20,7 @@
 Ваша учетная запись не подтверждена!
     {% endif %}
 [
-<a href="{{ url_for('auth:revalidate') }}">Отправить новый код подтверждения</a>
+<a href="{{ url_for('auth:revalidate') }}" class="common_button">Отправить новый код подтверждения</a>
 ]
 
 {% else %}
@@ -31,13 +31,13 @@
     {% endif %}
 <p>
 Введите код подтверждения: <input type="text" id="validation_code">
-<input type="button" value="Подтвердить" onClick="location.href='{{ url_for('auth:validate') }}/'+top.document.getElementById('validation_code').value;">
+<input type="button" class="common_button" value="Подтвердить" onClick="location.href='{{ url_for('auth:validate') }}/'+top.document.getElementById('validation_code').value;">
 </p>
 
 <br>
 <p>
 [
-<a href="{{ url_for('auth:revalidate') }}">Отправить новый код подтверждения</a>
+<a href="{{ url_for('auth:revalidate') }}" class="common_button">Отправить новый код подтверждения</a>
 ]
 </p>
 

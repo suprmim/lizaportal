@@ -141,6 +141,23 @@
 
 
 
+.cabinet_control_buttons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: table;
+    position: relative;
+    table-layout: fixed;
+}
+.cabinet_control_buttons li {
+    margin: 0;
+    padding: 0; // 0 0 30px;
+    display: table-cell;
+    vertical-align: top;
+}
+.cabinet_control_buttons li a {
+    margin: 5px;
+}
 
 
 
@@ -152,6 +169,37 @@
     background-color: #fbfbfb;
     border: 1px solid #f8f8f8;
     border-radius: 10px;
+    font: 13px/1.231 arial, helvetica, clean, sans-serif;
+    font-size: 14px;
 }
 
+
+
+.common_button {
+    display: inline-block;
+    font: 11px/20px"Conv_SeroPro", Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-color: #1a9f29;
+    border-radius: 2px;
+    text-decoration: none;
+    padding: 1px 16px 0;
+}
+
+.common_button:hover {
+    background-color: #48b254;
+}
+
+
+.common_input {
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
+
+.common_input_field {
+    padding: 0 0 5px 0;
+    overflow: hidden;
+}
+
+.width300 { width: 300px; }
+.width250 { width: 250px; }
 
