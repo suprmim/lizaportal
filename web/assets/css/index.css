@@ -24,18 +24,13 @@ body {
 }
 
 .header { 
-  background-color: #CCFFFF;
-  background-image: -moz-linear-gradient(#FF9933, #CCFFFF);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF9933), to(#CCFFFF));
-  background-image: -webkit-linear-gradient(#FF9933, #CCFFFF);
-  background-image: -o-linear-gradient(#FF9933, #CCFFFF);
-  background-image: -ms-linear-gradient(#FF9933, #CCFFFF);
-  background-image: linear-gradient(#FF9933, #CCFFFF);
-
+  overflow: hidden;
+  min-width: 100%;
 }
 
 .footer { /* подвал */
   background: #FF6600;
+  //background: #ff9c00;
   color: #fff;
   height: 60px; /* высота подвала */
   margin-top: -60px; /* делаем отрицательный отступ по высоте равный высоте подвла, чтобы четко вписаться в размер экрана */

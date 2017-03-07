@@ -1,6 +1,6 @@
 {% if user %}
-<div style="float: right; padding-left: 10px;" onClick="top.document.location.href='{{ url_for('auth:logout') }}'">Выход</div>
-<div style="float: right; padding-left: 10px;" onClick="top.document.location.href='{{ url_for('my:cabinet') }}'">ЛК</div>
+<a class="site-auth-login-bt" href="{{ url_for('my:cabinet') }}">ЛК</a>
+<a class="site-auth-login-bt" href="{{ url_for('auth:logout') }}">Выход</a>
 {% else %}
-<div onClick="top.document.location.href='{{ url_for('auth:login') }}'">Войти</div>
+<a class="site-auth-login-bt" href="{{ url_for('auth:login') }}">Войти</a>
 {% endif %}
