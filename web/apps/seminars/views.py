@@ -3,6 +3,8 @@ import datetime
 import pytz
 
 from sqlalchemy import desc
+from sqlalchemy.orm import aliased
+from sqlalchemy.sql import func as sa_func
 from flask import url_for
 from flaskcbv.view import View, TemplateView
 from flaskcbv.view.crud import FormViewMixin
@@ -22,12 +24,37 @@ db_session = get_db_session(echo=False)
 
 from .forms import updateCRUDForm
 
-class listView(AuthedMixin, TemplateView):
+class listViewMixin(object):
+
+    def get_query(self):
+        stmt = db_session.query(SeminarUsers.seminar_id, sa_func.count('id').label('assigned')).group_by(SeminarUsers.seminar_id).subquery()
+	main_query = db_session.query(Seminars, stmt.c.assigned).outerjoin(stmt, Seminars.id==stmt.c.seminar_id)
+        main_query = main_query.order_by(desc(Seminars.datebegin))
+        return main_query
+
+
+class listView(listViewMixin, AuthedMixin, TemplateView):
     template='seminars/list.tpl'
 
     def get_context_data(self, **kwargs):
         context = super(listView, self).get_context_data(**kwargs)
-        context['seminars'] = db_session.query(Seminars).order_by(desc(Seminars.datebegin)).all()[0:10]
+        context['seminars'] = self.get_query()
+        context['is_mylist'] = False
+        return context
+
+
+
+class myListView(listViewMixin, AuthedMixin, TemplateView):
+    template='seminars/list.tpl'
+
+    def get_context_data(self, **kwargs):
+        context = super(myListView, self).get_context_data(**kwargs)
+        su = aliased(SeminarUsers)
+        qs = self.get_query()
+        qs = qs.join(su, su.seminar_id==Seminars.id)
+        qs = qs.filter(su.user_id==self.request.user.id)
+        context['seminars'] = qs
+        context['is_mylist'] = True
         return context
 
 
@@ -45,6 +72,49 @@ class detailsView(AuthedMixin, TemplateView):
         return super(detailsView, self).get(request, **kwargs)
 
 
+
+class assignView(LoginRequiredMixin, View):
+    def __init__(self, *args, **kwargs):
+        self.assign = kwargs.pop('assign')
+        super(assignView, self).__init__(*args, **kwargs)
+
+    def get(self, request, pk, **kwargs):
+        seminar = db_session.query(Seminars).get(pk)
+
+        ## No such seminar:
+        if seminar is None:
+            return ResponseRedirect(url_for('seminars:list', pk=pk))
+
+        ## Get seminar->user relation:
+        su = db_session.query(SeminarUsers).filter(SeminarUsers.seminar_id==seminar.id)
+        su = su.filter(SeminarUsers.user_id==self.request.user.id)
+
+        ## Allready assigned:
+        if self.assign and su.first() is not None:
+            return ResponseRedirect(url_for('seminars:details', pk=pk))
+
+        ## Allready not assigned:
+        elif not self.assign and su.first() is None:
+            return ResponseRedirect(url_for('seminars:details', pk=pk))
+
+        ## Assign user to seminar:
+        if self.assign:
+            ## Too many listners:
+            if not seminar.user_assigne_avalible:
+                return ResponseRedirect(url_for('seminars:details', pk=pk))
+
+            su = SeminarUsers()
+            su.user_id = self.request.user.id
+            su.seminar_id = seminar.id
+            db_session.add(su)
+
+        ## UnAssign user:
+        else:
+            su.delete()
+
+        db_session.commit()
+        
+        return ResponseRedirect(url_for('seminars:details', pk=pk))
 
 
 

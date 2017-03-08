@@ -8,7 +8,7 @@
 
 {% block maincontent %}
 
-<h2>МОИ СЕМИНАРЫ</h2>
+<h2>СЕМИНАРЫ, РЕДАКТИРОВАНИЕ</h2>
 
 <a href="{{ url_for('seminars:crud_create') }}" class="common_button">СОЗДАТЬ</a>
 

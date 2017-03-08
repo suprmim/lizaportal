@@ -16,7 +16,7 @@
     <a href="#" class="common_button_disabled">Мои записи</a><br>
   </li>
   <li>
-    <a href="#" class="common_button_disabled">Мои семинары</a><br>
+    <a href="{{ url_for('seminars:mylist') }}" class="common_button">Мои семинары</a><br>
   </li>
 </ul>
 

@@ -1,3 +1,4 @@
+import logging
 import datetime, pytz
 from sqlalchemy import Table, MetaData, Column, Integer, VARCHAR, ForeignKey, DateTime, TEXT
 from sqlalchemy.orm import mapper,relationship
@@ -7,6 +8,7 @@ from sqlalchemy import DECIMAL, Boolean,Float
 from sqlalchemy.sql.expression import false as sa_false
 
 from utils.db import get_metadata
+from utils.db import get_db_session
 
 from models.seminar_users.sa_models import SeminarUsers
 
@@ -28,13 +30,35 @@ class Seminars(object):
         self.owner_id = owner_id
         self.price = price
 
-    @prototype
+    @property
     def is_expired(self):
         ## Get current datetime in UTC:
         dt = datetime.datetime.now().replace(tzinfo=pytz.utc)
         if (self.datebegin - dt).days < 0:
             return True
         return False
+
+
+    @property
+    def user_assigne_avalible(self):
+        if self.is_expired:
+            return False
+
+        db_session = get_db_session(echo=False)
+        cnt_ = db_session.query(SeminarUsers).filter(SeminarUsers.seminar_id==self.id).count()
+        if cnt_ >= self.capacity:
+            return False
+        return True
+
+
+    def user_assigned(self, uid):
+        seminars = SeminarUsers.get_user_seminars_query(uid)
+        seminar = seminars.filter(SeminarUsers.seminar_id==self.id).first()
+        if seminar is None:
+            return False
+        return True
+
+
 
 
 seminars = Table('seminars', metadata,

@@ -10,6 +10,8 @@ from misc.tzinfo import myTimeZone
 def strftime_filter(dt, format='%Y/%m/%d %H:%M', tz=3):
     if dt is None or isinstance(dt, Undefined):
         dt = datetime.datetime.now().replace(tzinfo=pytz.utc)
+    if not isinstance(dt, datetime.datetime):
+        return dt
     return dt.astimezone(myTimeZone(tz)).strftime(format)
 
 
