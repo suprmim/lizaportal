@@ -23,6 +23,7 @@
 
 <br>
 <br>
+{{ seminar.is_expired }}
 <a href="{{ url_for('seminars:list') }}" class="common_button">Записаться</a>
 
 {% endblock %}

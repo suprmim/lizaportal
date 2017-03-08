@@ -1,3 +1,4 @@
+import datetime, pytz
 from sqlalchemy import Table, MetaData, Column, Integer, VARCHAR, ForeignKey, DateTime, TEXT
 from sqlalchemy.orm import mapper,relationship
 from sqlalchemy.sql import func
@@ -26,6 +27,14 @@ class Seminars(object):
         self.capacity = capacity
         self.owner_id = owner_id
         self.price = price
+
+    @prototype
+    def is_expired(self):
+        ## Get current datetime in UTC:
+        dt = datetime.datetime.now().replace(tzinfo=pytz.utc)
+        if (self.datebegin - dt).days < 0:
+            return True
+        return False
 
 
 seminars = Table('seminars', metadata,
