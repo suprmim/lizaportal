@@ -76,6 +76,17 @@
 }
 
 
+.site-auth-controls {
+    float: right;
+}
+
+.site-auth-fio {
+    float: right;
+    clear: both;
+    font: 11px/20px"Conv_SeroPro", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+}
 
 
 .header-menu-wrapper {

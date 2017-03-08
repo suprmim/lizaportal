@@ -23,8 +23,8 @@
 
 <br>
 <br>
-{% if user and not seminar.is_expired %}
-    {% if seminar.user_assigned(user.id) %}
+{% if not seminar.is_expired %}
+    {% if user and seminar.user_assigned(user.id) %}
 <a href="{{ url_for('seminars:unassign', pk=seminar.id) }}" class="common_button">Не приду</a>
     {% elif seminar.user_assigne_avalible %}
 <a href="{{ url_for('seminars:assign', pk=seminar.id) }}" class="common_button">Записаться</a>
