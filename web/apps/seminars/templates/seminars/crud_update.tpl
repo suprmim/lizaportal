@@ -6,7 +6,7 @@
 
 
 {% if object %}
-<h2>СЕМИНАРЫ: РЕДАКТИРОВАНИЕ</h2>
+<h2>МОИ СЕМИНАРЫ: РЕДАКТИРОВАНИЕ</h2>
 <form name="auth" method="POST" action="{{ url_for('seminars:crud_update', pk=object.id) }}">
 {% else %}
 <h2>СЕМИНАРЫ: НОВЫЙ</h2>
@@ -20,7 +20,7 @@
 
         <div class="common_input_field"><input type="text" class="common_input width300" placeholder="Цена" name="price" value="{{ form.data.price }}"></div>
         <div class="common_input_field"><input type="text" class="common_input width300" placeholder="Количество мест" name="capacity" value="{{ form.data.capacity }}"></div>
-        <div class="common_input_field"><input type="text" class="js-date_begin common_input width300" placeholder="Начало" name="datebegin" value="{{ form.data.datebegin }}"></div>
+        <div class="common_input_field"><input type="text" class="js-date_begin common_input width300" placeholder="Начало" name="datebegin" value="{{ form.data.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}"></div>
         <div class="common_input_field common_btn_wrapper width300">
           <a href="{{ url_for('seminars:crud_list') }}" class="common_button">Назад</a>
           <button type="reset" class="common_button">Отмена</button>

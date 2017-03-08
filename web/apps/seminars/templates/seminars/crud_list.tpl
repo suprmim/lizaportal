@@ -4,7 +4,7 @@
 
 {% block maincontent %}
 
-<h2>СЕМИНАРЫ</h2>
+<h2>МОИ СЕМИНАРЫ</h2>
 
 <a href="{{ url_for('seminars:crud_create') }}" class="common_button">СОЗДАТЬ</a>
 
@@ -12,7 +12,7 @@
 {% for s in seminars %}
 <tr>
   <td>
-{{ s.datebegin }}
+{{ s.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}
   </td>
   <td>
 <a href="{{ url_for('seminars:crud_update', pk=s.id) }}">

@@ -12,7 +12,7 @@
 {% for s in seminars %}
 <tr>
   <td>
-{{ s.datebegin }}
+{{ s.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}
   </td>
   <td>
 <a href="{{ url_for('seminars:details', pk=s.id) }}">

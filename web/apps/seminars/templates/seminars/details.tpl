@@ -12,7 +12,8 @@
 <br>
 <br>
 
-{{ seminar.datebegin }}<br>
+{{ seminar.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}<br>
+
 {{ seminar.name }}<br>
 {{ seminar.description }}<br>
 {{ seminar.body }}

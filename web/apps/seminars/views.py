@@ -71,10 +71,7 @@ class updateCRUDView(AccessMixin, FormViewMixin, TemplateView):
             ## No keys in form.data, feel it from object attributes:
             if len(context['form'].data.keys()) == 0:
                 for attr in dir(context['object']):
-                    if attr == 'datebegin':
-                        context['form'].data[attr] = getattr(context['object'], attr).astimezone(myTimeZone(3)).strftime('%Y/%m/%d %H:%M')
-                    else:
-                        context['form'].data[attr] = getattr(context['object'], attr)
+                    context['form'].data[attr] = getattr(context['object'], attr)
 
         return context
 
