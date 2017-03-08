@@ -5,17 +5,20 @@
 {% block maincontent %}
 
 
-<h2>СЕМИНАРЫ</h2>
+<h2>СЕМИНАР:
+{{ seminar.name }}
+</h2>
 
 
 <a href="{{ url_for('seminars:list') }}" class="common_button">Назад</a>
 <br>
 <br>
 
-{{ seminar.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}<br>
+Начало: {{ seminar.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}<br>
+<br>
 
-{{ seminar.name }}<br>
 {{ seminar.description }}<br>
+<br>
 {{ seminar.body }}
 
 <br>

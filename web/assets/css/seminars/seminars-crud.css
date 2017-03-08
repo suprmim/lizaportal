@@ -1,0 +1,40 @@
+
+
+.seminars-crud-list {
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    //background-color: #ff6600;
+
+    margin: 0;
+    padding: 0;
+    display: table;
+    border-collapse: collapse;
+}
+
+.seminars-crud-list div {
+    margin: 0;
+    width: 100%;
+    display: table-row;
+    vertical-align: top;
+
+    text-decoration: none;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #464e55;
+    cursor: pointer;
+}
+
+.seminars-crud-list div span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.seminars-crud-list div span:last-child {
+    //float: right;
+    right: 100px;
+}
+
+
+
+

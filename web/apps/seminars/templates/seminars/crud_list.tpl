@@ -1,6 +1,10 @@
 {% extends "index.tpl" %}
 
 {% block title %}OSTEOLA.RU Семинары{% endblock %}
+{% block head_imports %}
+    <link rel="stylesheet" href="{{url_for('.static', filename='css/seminars/seminars-crud.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='css/seminars/seminars.css')}}">
+{% endblock %}
 
 {% block maincontent %}
 
@@ -8,26 +12,26 @@
 
 <a href="{{ url_for('seminars:crud_create') }}" class="common_button">СОЗДАТЬ</a>
 
-<table width="60%">
+<div class="seminars-crud-list">
 {% for s in seminars %}
-<tr>
-  <td>
+<div onClick="document.location.href='{{ url_for('seminars:crud_update', pk=s.id) }}'">
+  <span class="width150 seminars-datebegin">
 {{ s.datebegin|strftime('%Y/%m/%d %H:%M', 3) }}
-  </td>
-  <td>
-<a href="{{ url_for('seminars:crud_update', pk=s.id) }}">
-{{ s.name }}<br>
-{{ s.description }}
-</a>
-  </td>
-  <td>
-<a class="common_button" href="{{ url_for('seminars:crud_delete', pk=s.id) }}">
+  </span>
+  <span class="">
+<span class="seminars-name">{{ s.name }}</span>
+<span class="seminars-setts">Записалось: 0/{{ s.capacity }}</span>
+<span class="seminars-setts">Стоимость: {{ s.price }} руб</span>
+<span class="seminars-description">{{ s.description }}</span>
+  </span>
+  <span class="width30">
+    <a class="common_button" href="{{ url_for('seminars:crud_delete', pk=s.id) }}">
 DEL
-</a>
-  </td>
-</tr>
+    </a>
+  </span>
+</div>
 {% endfor %}
-</table>
+</div>
 
 {% endblock %}
 
