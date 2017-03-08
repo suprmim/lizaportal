@@ -10,13 +10,13 @@
 <div class="common-small-header" style="margin-top: 20px; margin-bottom: 0px;">Общие:</div>
 <ul class="cabinet_control_buttons">
   <li>
-    <a href="#" class="common_button">Записаться</a><br>
+    <a href="#" class="common_button_disabled">Записаться</a><br>
   </li>
   <li>
-    <a href="#" class="common_button">Мои записи</a><br>
+    <a href="#" class="common_button_disabled">Мои записи</a><br>
   </li>
   <li>
-    <a href="#" class="common_button">Мои семинары</a><br>
+    <a href="#" class="common_button_disabled">Мои семинары</a><br>
   </li>
 </ul>
 
@@ -24,13 +24,13 @@
 <div class="common-small-header" style="margin-top: 20px; margin-bottom: 0px;">Настройки:</div>
 <ul class="cabinet_control_buttons">
   <li>
-    <a href="#" class="common_button">Анкета</a><br>
+    <a href="#" class="common_button_disabled">Анкета</a><br>
   </li>
   <li>
-    <a href="#" class="common_button">Сменить пароль</a><br>
+    <a href="#" class="common_button_disabled">Сменить пароль</a><br>
   </li>
   <li>
-    <a href="#" class="common_button">Сменить E-Mail</a><br>
+    <a href="#" class="common_button_disabled">Сменить E-Mail</a><br>
   </li>
 </ul>
 
@@ -39,13 +39,13 @@
 <div class="common-small-header" style="margin-top: 20px; margin-bottom: 0px;">Контент:</div>
 <ul class="cabinet_control_buttons">
   <li>
-    <a href="#" class="common_button">Новости</a><br>
+    <a href="#" class="common_button_disabled">Новости</a><br>
   </li>
   <li>
     <a href="{{ url_for('seminars:crud_list') }}" class="common_button">Семинары</a><br>
   </li>
   <li>
-    <a href="#" class="common_button">Статьи</a><br>
+    <a href="#" class="common_button_disabled">Статьи</a><br>
   </li>
 </ul>
 {% endif %}
@@ -55,7 +55,7 @@
 <div class="common-small-header" style="margin-top: 20px; margin-bottom: 0px;">Управление:</div>
 <ul class="cabinet_control_buttons">
   <li>
-    <a href="#" class="common_button">Пользователи</a><br>
+    <a href="#" class="common_button_disabled">Пользователи</a><br>
   </li>
 </ul>
 {% endif %}
