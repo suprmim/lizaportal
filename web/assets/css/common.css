@@ -203,11 +203,10 @@
 
 
 
-.common_button {
+.common_button,.common_button_disabled {
     display: inline-block;
     font: 11px/20px"Conv_SeroPro", Arial, Helvetica, sans-serif;
     color: #fff;
-    background-color: #1a9f29;
     border-radius: 2px;
     text-decoration: none;
     padding: 1px 16px 0;
@@ -215,6 +214,16 @@
 
 .common_button:hover {
     background-color: #48b254;
+}
+
+
+.common_button {
+    background-color: #1a9f29;
+}
+
+.common_button_disabled {
+    color: #fff;
+    background-color: #888888;
 }
 
 
