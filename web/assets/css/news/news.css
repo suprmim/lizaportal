@@ -1,0 +1,43 @@
+
+.news-list {
+    width: 100%;
+}
+
+.news-list>div {
+    //background-color: red;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-bottom: 5px;
+
+    text-decoration: none;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #464e55;
+    cursor: pointer;
+}
+
+.news-datebegin {
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #464e55;
+    float: left;
+}
+
+.news-name {
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    float: left;
+    color: #464e55;
+}
+
+.news-description {
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+    float: left;
+    color: #464e55;
+    clear: both;
+    margin-top: 5px;
+}
+

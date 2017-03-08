@@ -47,7 +47,7 @@
         <div class="header-menu-wrapped">
           <ul class="header-menu">
           <li class="header-menu-button">
-            <a href="#">
+            <a href="{{ url_for('news:list') }}">
               <span>
 Новости
               </span>

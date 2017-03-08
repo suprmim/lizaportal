@@ -39,7 +39,7 @@
 <div class="common-small-header" style="margin-top: 20px; margin-bottom: 0px;">Контент:</div>
 <ul class="cabinet_control_buttons">
   <li>
-    <a href="#" class="common_button_disabled">Новости</a><br>
+    <a href="{{ url_for('news:crud_list') }}" class="common_button">Новости</a><br>
   </li>
   <li>
     <a href="{{ url_for('seminars:crud_list') }}" class="common_button">Семинары</a><br>

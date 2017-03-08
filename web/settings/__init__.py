@@ -5,6 +5,7 @@ APPLICATIONS = (
     'auth', 
     'my', 
     'seminars', 
+    'news', 
 )
 
 DEFAULT_HEADERS = {
