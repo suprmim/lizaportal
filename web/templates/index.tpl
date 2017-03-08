@@ -22,7 +22,7 @@
     </title>
 
   </head>
-  <body>
+  <body class="body-background">
     <div class="wrapper">
       <div class="header">
         <div class="header-top-line">
@@ -39,7 +39,9 @@
           </div>
         </div>
 
-        <ul class="header-menu">
+        <div class="header-menu-wrapper">
+        <div class="header-menu-wrapped">
+          <ul class="header-menu">
           <li class="header-menu-button">
             <a href="#">
               <span>
@@ -75,9 +77,10 @@
 
 
 
-        </ul>
+          </ul>
+        </div>
+        </div>
       </div>
-      <br> 
 
       <div class="site-content">
         {% block maincontent %}{% endblock %}

@@ -78,6 +78,25 @@
 
 
 
+.header-menu-wrapper {
+    //background-color: #ff9c00;
+    background-color: #ff6600;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.header-menu-wrapped {
+    width: 93%;
+    overflow: hidden;
+
+    margin: 0 auto;
+    padding: 0;
+
+    position: relative;
+    right: auto;
+    top: auto;
+}
 
 .header-menu {
     overflow: hidden;
@@ -94,6 +113,7 @@
     table-layout: fixed;
 }
 
+
 .header-menu-button {
     color: #ffffff;
     font: 17px/19px Conv_SeroPro,Arial,Tahoma,sans-serif;
@@ -104,10 +124,15 @@
     margin: 0;
     padding: 0; // 0 0 30px;
     display: table-cell;
-    height: 60px;
+    height: 50px;
     vertical-align: top;
     background-image: none;
     background-position: 0 6px;
+}
+
+.header-menu-button:first-child a {
+    //border: 1px solid #ff6600;
+    border-left-color: #ff6600;
 }
 
 .header-menu-button:hover {
@@ -118,12 +143,13 @@
     text-decoration: none;
     padding: 0 11px;
     width: 100%;
-    height: 60px;
+    height: 50px;
     display: table;
     vertical-align: middle;
     font: 17px/19px Conv_SeroPro,Arial,Tahoma,sans-serif;
     color: #fff;
-    border: 1px solid #ffbf5a;
+    border: 1px solid #ff6600;
+    border-left-color: #ffbf5a;
     position: relative;
     cursor: pointer;
 }
@@ -165,12 +191,14 @@
 .site-content {
     width: 980px;
     margin: 0 auto;
-    padding: 0 20px 19px 20px;
-    background-color: #fbfbfb;
-    border: 1px solid #f8f8f8;
-    border-radius: 10px;
+    padding: 5px 20px 19px 20px;
     font: 13px/1.231 arial, helvetica, clean, sans-serif;
     font-size: 14px;
+    background-color: #ffffff;
+    border: 1px solid #f8f8f8;
+    //border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
 }
 
 
@@ -198,6 +226,15 @@
 .common_input_field {
     padding: 0 0 5px 0;
     overflow: hidden;
+}
+
+.common-small-header {
+    font: 13px/1.231 arial, helvetica, clean, sans-serif;
+    color: #666666;
+    text-shadow: 1px 1px 1px #cccccc;
+    font-size: 12px;
+    margin: 0.83em 0;
+    padding: 0;
 }
 
 .width300 { width: 300px; }

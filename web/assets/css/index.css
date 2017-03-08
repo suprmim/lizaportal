@@ -11,6 +11,10 @@ body {
   font-size: 75%;
 }
 
+.body-background {
+  background: #fafafa;
+}
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
