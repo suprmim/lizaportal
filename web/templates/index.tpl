@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="{{url_for('.static', filename='css/common.css')}}">
     <!--link rel="stylesheet" href="{{url_for('.static', filename='css/menu.css')}}"-->
     <!--link rel="stylesheet" href="{{url_for('.static', filename='css/button.css')}}"-->
+    <link rel="stylesheet" href="{{url_for('.static', filename='css/jquery.periodpicker.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='css/jquery.timepicker.min.css')}}">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/jquery.periodpicker.full.min.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/jquery.timepicker.min.js') }}"></script>
     <title>
 {% block title %}OSTEOLA.RU Портал{% endblock %}
     </title>

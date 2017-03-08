@@ -8,6 +8,7 @@ sudo aptitude install python-gevent
 
 sudo pip install flaskcbv
 sudo pip install asa_mptt
+sudo pip install pytz
 
 
 ## E-Mail validator:

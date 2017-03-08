@@ -15,11 +15,12 @@ metadata = get_metadata()
 ## MODEL:
 class Seminars(object):
     def __init__(self, datebegin=func.now(), name=None, description='', capacity=0, 
-        price=0, owner_id=None, disabled=False,
+        price=0, owner_id=None, disabled=False, body='',
     ):
         self.datebegin = datebegin
         self.name = name
         self.description = description
+        self.body = body
         self.crdate = func.now()
         self.disabled = disabled
         self.capacity = capacity
@@ -37,6 +38,7 @@ seminars = Table('seminars', metadata,
     Column('disabled', Boolean(), nullable=False, server_default=sa_false()),
     Column('owner_id', Integer, ForeignKey('users.id'), nullable=False),
     Column('description', TEXT, nullable=False, server_default=''),
+    Column('body', TEXT, nullable=False, server_default=''),
     extend_existing=True,
 )
 

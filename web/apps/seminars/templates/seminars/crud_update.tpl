@@ -7,7 +7,7 @@
 
 {% if object %}
 <h2>СЕМИНАРЫ: РЕДАКТИРОВАНИЕ</h2>
-<form name="auth" method="POST" action="{{ url_for('seminars:crud_update', pk=object.pk) }}">
+<form name="auth" method="POST" action="{{ url_for('seminars:crud_update', pk=object.id) }}">
 {% else %}
 <h2>СЕМИНАРЫ: НОВЫЙ</h2>
 <form name="auth" method="POST" action="{{ url_for('seminars:crud_create') }}">
@@ -20,8 +20,9 @@
 
         <div class="common_input_field"><input type="text" class="common_input width300" placeholder="Цена" name="price" value="{{ form.data.price }}"></div>
         <div class="common_input_field"><input type="text" class="common_input width300" placeholder="Количество мест" name="capacity" value="{{ form.data.capacity }}"></div>
-        <div class="common_input_field"><input type="text" class="common_input width300" placeholder="Начало" name="date_begin" value="{{ form.data.date_begin }}"></div>
+        <div class="common_input_field"><input type="text" class="js-date_begin common_input width300" placeholder="Начало" name="datebegin" value="{{ form.data.datebegin }}"></div>
         <div class="common_input_field common_btn_wrapper width300">
+          <a href="{{ url_for('seminars:crud_list') }}" class="common_button">Назад</a>
           <button type="reset" class="common_button">Отмена</button>
           <button type="submit" class="common_button common_button_warn">Сохранить</button>
         </div>
@@ -30,6 +31,63 @@
 
 Errors: {{ form.errors }}
 
+<script>
+
+$( document ).ready(function() {
+
+        $('.js-date_begin').periodpicker({
+            inline: false,
+
+            norange: true, // use only one value
+            cells: [1, 1], // show only one month
+
+            todayButton: true,
+            formatDateTime: 'YYYY/MM/DD HH:mm',
+            yearsLine: false,
+
+            clearButton: false,
+            okButton: false,
+            closeAfterClear: true,
+            draggable: false,
+            mousewheel: true,
+
+            resizeButton: false, // deny resize picker
+            lang: 'ru',
+            animation: true,
+            showTimepickerInputs: false,
+            showDatepickerInputs: false,
+            hideAfterSelect: true,
+            hideOnBlur: true,
+            likeXDSoftDateTimePicker: true,
+
+            fullsizeButton: false,
+            fullsizeOnDblClick: false,
+
+
+            timepicker: true, // use timepicker
+            timepickerOptions: {
+                steps: [1, 5, 2, 1],
+                hours: true,
+                minutes: true,
+                seconds: false,
+                ampm: false,
+                clickAndSelect: true,
+                saveOnChange: true,
+                listenKeyPress: true,
+                //onChange: function(e) {
+                //    return false;
+                //},
+                twelveHoursFormat: false
+            }
+
+        }).on('keydown', function(e) {
+            $(this).periodpicker('change');
+        });
+
+});
+
+
+</script>
 
 
 {% endblock %}

@@ -7,12 +7,23 @@
 
 <h2>СЕМИНАРЫ</h2>
 
-Семинары
-<br>
-Семинары
-<br>
-Семинары
-<br>
+
+<table width="60%">
+{% for s in seminars %}
+<tr>
+  <td>
+{{ s.datebegin }}
+  </td>
+  <td>
+<a href="{{ url_for('seminars:details', pk=s.id) }}">
+{{ s.name }}<br>
+{{ s.description }}
+</a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
 
 {% endblock %}
 
